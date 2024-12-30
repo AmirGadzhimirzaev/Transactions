@@ -1,8 +1,8 @@
 def get_mask_card_number(card_number: int | str) -> str:
     """Функция возвращает маску номера по правилу XXXX XX** **** XXXX"""
-    mask_of_card = [str(card_number)[int(num, 16)] if num.isalnum() else num for num in "0123 45** **** CDEF"]
+    texted_number = str(card_number)
 
-    return "".join(mask_of_card)
+    return f"{texted_number[:4]} {texted_number[4:6]}** **** {texted_number[-4:]}"
 
 
 def get_mask_account(account_number: int | str) -> str:
