@@ -1,6 +1,6 @@
 import pytest
 
-from src.widget import mask_account_card, get_date
+from src.widget import get_date, mask_account_card
 
 
 @pytest.mark.parametrize("typed_data, expected", [
@@ -17,7 +17,7 @@ from src.widget import mask_account_card, get_date
     (123345525, "Номер должен быть в строкой!"),
     (123345525.12, "Номер должен быть в строкой!"),
 ])
-def test_mask_account_card(typed_data, expected):
+def test_mask_account_card(typed_data: str, expected: str) -> None:
     assert mask_account_card(typed_data) == expected
 
 
@@ -28,5 +28,5 @@ def test_mask_account_card(typed_data, expected):
     (123.3, "Не правильный формат!"),
     ("WDMOPNWNNWCCWввdwqdqdv,.../", "Не правильный формат!"),
 ])
-def test_get_date(test_date, expected):
+def test_get_date(test_date: str, expected: str) -> None:
     assert get_date(test_date) == expected

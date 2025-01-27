@@ -1,6 +1,6 @@
 import pytest
 
-from src.mask import get_mask_card_number, get_mask_account
+from src.mask import get_mask_account, get_mask_card_number
 
 
 @pytest.mark.parametrize("card_number, expected", [
@@ -11,7 +11,7 @@ from src.mask import get_mask_card_number, get_mask_account
     ("", "Номер карты должен содержать 16 цифр!"),
     ("7AC079228960EZ61", "Номер карты должен содержать только цифры!"),
 ])
-def test_get_card_number(card_number, expected):
+def test_get_card_number(card_number: str | int, expected: str) -> None:
     assert get_mask_card_number(card_number) == expected
 
 
@@ -23,5 +23,5 @@ def test_get_card_number(card_number, expected):
     ("", "Номер аккаунта должен содержать 20 цифр!"),
     ("31212LDLF1334134DE32", "Номер аккаунта должен содержать только цифры!"),
 ])
-def test_get_mask_account(account_number, expected):
+def test_get_mask_account(account_number: str, expected: str) -> None:
     assert get_mask_account(account_number) == expected

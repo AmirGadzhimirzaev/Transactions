@@ -4,7 +4,7 @@ from src.processing import filter_by_state, sorted_by_state
 
 
 @pytest.fixture
-def test_list_of_dict():
+def test_list_of_dict() -> list[dict]:
     return [
         {'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
         {'id': 615064591, 'state': 'CANCELED', 'date': '2018-10-14T08:21:33.419441'},
@@ -13,7 +13,7 @@ def test_list_of_dict():
 
 
 @pytest.fixture
-def test_list_of_dict_with_same_date():
+def test_list_of_dict_with_same_date() -> list[dict]:
     return [
         {'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
         {'id': 615064591, 'state': 'CANCELED', 'date': '2019-07-03T18:35:29.512364'},
@@ -30,11 +30,11 @@ def test_list_of_dict_with_same_date():
     (None, "Возникла ошибка!"),
     (123445, "Возникла ошибка!"),
 ])
-def test_filter_by_state(test_list_of_dict, state_argument, expected):
+def test_filter_by_state(test_list_of_dict: list[dict], state_argument: str, expected: str) -> None:
     assert filter_by_state(test_list_of_dict, state_argument) == expected
 
 
-def test_filter_by_no_state(test_list_of_dict):
+def test_filter_by_no_state(test_list_of_dict: list[dict]) -> None:
     assert filter_by_state(test_list_of_dict) == [
         {'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
         {'id': 939719570, 'state': 'EXECUTED', 'date': '2018-06-30T02:08:58.425572'}]
@@ -53,9 +53,9 @@ def test_filter_by_no_state(test_list_of_dict):
     (None, "Что-то пошло не так!"),
     ([], "Что-то пошло не так!"),
 ])
-def test_sorted_by_state(test_list_of_dict, state, expected):
+def test_sorted_by_state(test_list_of_dict: list[dict], state: bool, expected: str) -> None:
     assert sorted_by_state(test_list_of_dict, state) == expected
 
 
-def test_sorted_by_state_with_same_date(test_list_of_dict_with_same_date):
+def test_sorted_by_state_with_same_date(test_list_of_dict_with_same_date: list[dict]) -> None:
     assert sorted_by_state(test_list_of_dict_with_same_date) == test_list_of_dict_with_same_date

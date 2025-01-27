@@ -8,7 +8,7 @@ def mask_account_card(typed_card_number: str) -> str:
 
     if typed_card_number is None:
         return "Не может быть None!"
-    elif type(typed_card_number) != str:
+    elif isinstance(typed_card_number, str):
         return "Номер должен быть в строкой!"
     elif typed_card_number[:4].lower() in ["счёт", "счет"]:
         return f"{typed_card_number[:-21].capitalize()} {m.get_mask_account(typed_card_number[-20:])}"
@@ -21,7 +21,9 @@ def mask_account_card(typed_card_number: str) -> str:
 
 def get_date(date: str) -> str:
     """Функция возвращает строку с датой в формате ДД.ММ.ГГГГ"""
-    if date is not None and isinstance(date, str) and len(date) == 26 and f"{date[8:10]}{date[5:7]}{date[0:4]}".isdigit():
+
+    if date is not None and isinstance(date, str) and len(
+            date) == 26 and f"{date[8:10]}{date[5:7]}{date[0:4]}".isdigit():
         return f"{date[8:10]}.{date[5:7]}.{date[0:4]}"
     else:
         return "Не правильный формат!"

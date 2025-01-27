@@ -5,7 +5,7 @@ def filter_by_state(list_of_dict: list[dict], state: str = "EXECUTED") -> list[d
     у которых ключ 'state' соответствует указанному значению.
     """
 
-    if state in ["EXECUTED", "CANCELED"] and type(list_of_dict) == list:
+    if state is ["EXECUTED", "CANCELED"] and isinstance(list_of_dict, list):
         return list(filter(lambda x: x["state"] == state, list_of_dict))
     else:
         return "Возникла ошибка!"
@@ -14,7 +14,7 @@ def filter_by_state(list_of_dict: list[dict], state: str = "EXECUTED") -> list[d
 def sorted_by_state(list_of_dict: list[dict], in_descending_order: bool = True) -> list[dict] | str:
     """Функция возвращает новый список словарей отсортированных по дате."""
 
-    if type(list_of_dict) == list and len(list_of_dict) != 0 and type(in_descending_order) == bool:
+    if isinstance(list_of_dict, list) and len(list_of_dict) != 0 and isinstance(in_descending_order, bool):
         return sorted(list_of_dict, key=lambda x: x["date"], reverse=in_descending_order)
     else:
         return "Что-то пошло не так!"
