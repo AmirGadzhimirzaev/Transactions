@@ -8,8 +8,8 @@ def mask_account_card(typed_card_number: str) -> str:
 
     if typed_card_number is None:
         return "Не может быть None!"
-    elif isinstance(typed_card_number, str):
-        return "Номер должен быть в строкой!"
+    elif not isinstance(typed_card_number, str):
+        return "Номер должен быть строкой!"
     elif typed_card_number[:4].lower() in ["счёт", "счет"]:
         return f"{typed_card_number[:-21].capitalize()} {m.get_mask_account(typed_card_number[-20:])}"
     elif typed_card_number[:-17].lower() in list_of_payment_methods_names:

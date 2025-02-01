@@ -5,7 +5,7 @@ def filter_by_state(list_of_dict: list[dict], state: str = "EXECUTED") -> list[d
     у которых ключ 'state' соответствует указанному значению.
     """
 
-    if state is ["EXECUTED", "CANCELED"] and isinstance(list_of_dict, list):
+    if state in ["EXECUTED", "CANCELED"] and isinstance(list_of_dict, list):
         return list(filter(lambda x: x["state"] == state, list_of_dict))
     else:
         return "Возникла ошибка!"
