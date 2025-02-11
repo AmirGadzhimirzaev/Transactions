@@ -1,9 +1,7 @@
 from typing import Generator
 
-from mypyc.primitives.misc_ops import yield_from_except_op
 
-
-def filter_by_currency(transactions: list[dict], currency=None):
+def filter_by_currency(transactions: list[dict], currency: str | None = None) -> Generator | str:
     """Функция поочереди возвращает итератор со словарями в зависимости от валюты"""
 
     if isinstance(transactions, list) and len(transactions) > 0:
@@ -17,7 +15,7 @@ def filter_by_currency(transactions: list[dict], currency=None):
         return "Что-то пошло не так!"
 
 
-def transaction_descriptions(transactions: list[dict]):
+def transaction_descriptions(transactions: list[dict]) -> Generator:
     """Функция-генератор поочереди возвращает описание входящих операций"""
 
     for data in transactions:
@@ -27,7 +25,7 @@ def transaction_descriptions(transactions: list[dict]):
         yield "Данных больше нет!"
 
 
-def card_number_generator(start_value: int | str = 0, end_value: int | str = 1) -> Generator:
+def card_number_generator(start_value: int = 0, end_value: int = 1) -> Generator:
     """Функция-генератор номеров банковских карт в заданном диапазоне в формате XXXX XXXX XXXX XXXX"""
 
     for card_nuber in range(start_value, end_value + 1):
