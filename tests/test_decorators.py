@@ -14,6 +14,6 @@ def test_log(capsys):
     captured_ok = capsys.readouterr()
     assert captured_ok.out == "log_testing_foo ok\n"
 
-    @log('text.txt')
+    @log("text.txt")
     def log_testing_foo_to_file(a, b):
         return a / b
