@@ -3,7 +3,7 @@ import os
 
 
 def csv_reader(
-        csv_file_path: str = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "transactions.csv")):
+        csv_file_path: str = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "transactions.csv")) -> list:
     """ Функция для считывания финансовых операций из csv-файла, выдает список словарей с транзакциями """
 
     try:
@@ -21,7 +21,7 @@ def csv_reader(
 
 
 def xlsx_reader(xlsx_file_path: str = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data",
-                                                   "transactions_excel.xlsx")):
+                                                   "transactions_excel.xlsx")) -> list:
     """ Функция для считывания финансовых операций из Excel, выдает список словарей с транзакциями """
 
     try:
