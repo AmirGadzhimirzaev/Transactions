@@ -18,6 +18,7 @@
 3. **[processing.py](src/processing.py)** - фильтрует и сортирует данные о транзакциях
 4. **[generators.py](src/generators.py)** - генерирует данные о транзакциях и номера карт
 5. **[decorators.py](src/decorators.py)** - модуль содержащий декораторы: логирование
+6. **[format_reade](src/format_reader.py)** - читает csv и execl файлы и возвращает список словарей
 
 ## Тесты:
 
