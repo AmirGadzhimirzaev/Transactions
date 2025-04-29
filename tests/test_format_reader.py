@@ -24,7 +24,7 @@ def test_xlsx_reader_mocked(mock_read_xlsx):
 
 
 def test_csv_xlsx_reader():
-    assert csv_reader('') == []
-    assert xlsx_reader('') == []
+    assert csv_reader("") == []
+    assert xlsx_reader("") == []
     assert csv_reader(123) == []
     assert xlsx_reader(123) == []

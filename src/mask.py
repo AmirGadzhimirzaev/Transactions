@@ -1,5 +1,6 @@
 import logging
 import os
+import re
 
 mask_log_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "logs", "mask_logger.log")
 
@@ -26,7 +27,7 @@ def get_mask_card_number(card_number: int | str) -> str:
         elif not texted_number.isdigit():
             return "Номер карты должен содержать только цифры!"
         else:
-            return f"{texted_number[:4]} {texted_number[4:6]}** **** {texted_number[-4:]}"
+            return re.sub(r"(\d{4})(\d{2})(\d{2})(\d{4})(\d{4})", r"\1 \2** **** \5", texted_number)
 
     except Exception as ex:
         mask_logger.error(f"ERROR: {ex}")
@@ -49,7 +50,7 @@ def get_mask_account(account_number: int | str) -> str:
         elif not str_account_number.isdigit():
             return "Номер аккаунта должен содержать только цифры!"
         else:
-            return f"**{str_account_number[-4:]}"
+            return re.sub(r"\d+(?=\d{4})", "**", str_account_number)
 
     except Exception as ex:
         mask_logger.error(f"ERROR: {ex}")
