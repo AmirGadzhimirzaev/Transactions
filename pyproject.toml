@@ -9,6 +9,10 @@ readme = "README.md"
 python = "^3.10"
 python-dotenv = "^1.0.1"
 requests = "^2.32.3"
+pandas = "^2.2.3"
+openpyxl = "^3.1.5"
+pandas-stubs = "^2.2.3.250308"
+pytest = "^8.3.5"
 
 
 [tool.poetry.group.lint.dependencies]
@@ -19,7 +23,6 @@ mypy = "^1.13.0"
 
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.3.4"
 pytest-cov = "^6.0.0"
 
 [build-system]

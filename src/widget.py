@@ -1,24 +1,24 @@
-import src.mask as m
+import re
+
+from src import mask
 
 
 def mask_account_card(typed_card_number: str) -> str:
     """Функция возвращает строку с замаскированным номером"""
 
-    list_of_payment_methods_names = ["maestro", "master card", "visa classic", "visa platinum", "visa gold"]
-
-    if typed_card_number is None:
-        return "Не может быть None!"
-    elif not isinstance(typed_card_number, str):
-        return "Номер должен быть строкой!"
-    elif typed_card_number[:4].lower() in ["счёт", "счет"]:
-        return f"{typed_card_number[:-21].capitalize()} {m.get_mask_account(typed_card_number[-20:])}"
-    elif typed_card_number[:-17].lower() in list_of_payment_methods_names:
-        return (
-            f"{typed_card_number[:-17].split()[0].capitalize()} {typed_card_number[:-17].split()[1].capitalize()}"
-            f" {m.get_mask_card_number(typed_card_number[-16:])}"
-        )
+    if typed_card_number is None or not isinstance(typed_card_number, str) or len(typed_card_number) <= 0:
+        return "Неверный формат!"
     else:
-        return "Что-то пошло не так!"
+        all_digits = re.search(r"\d+", typed_card_number).group()
+
+    if len(all_digits) == 20:
+        all_digits = mask.get_mask_account(all_digits)
+    elif len(all_digits) == 16:
+        all_digits = mask.get_mask_card_number(all_digits)
+    else:
+        return "Неверный формат!"
+
+    return re.sub(r"\d+", all_digits, typed_card_number)
 
 
 def get_date(date: str) -> str:
@@ -27,9 +27,9 @@ def get_date(date: str) -> str:
     if (
         date is not None
         and isinstance(date, str)
-        and len(date) == 26
-        and f"{date[8:10]}{date[5:7]}{date[0:4]}".isdigit()
+        and len(date) > 0
+        and re.search(r"^\d{4}-\d{2}-\d{2}", date) is not None
     ):
-        return f"{date[8:10]}.{date[5:7]}.{date[0:4]}"
+        return re.sub(r".*(\d{4})-(\d{2})-(\d{2}).*", r"\3.\2.\1", date)
     else:
-        return "Не правильный формат!"
+        return "Неверный формат даты!"

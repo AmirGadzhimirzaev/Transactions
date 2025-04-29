@@ -1,6 +1,6 @@
 import pytest
 
-from src.processing import filter_by_state, sorted_by_state
+from src.processing import filter_by_state, sort_by_date
 
 
 @pytest.fixture
@@ -83,8 +83,8 @@ def test_filter_by_no_state(test_list_of_dict: list[dict]) -> None:
     ],
 )
 def test_sorted_by_state(test_list_of_dict: list[dict], state: bool, expected: str) -> None:
-    assert sorted_by_state(test_list_of_dict, state) == expected
+    assert sort_by_date(test_list_of_dict, state) == expected
 
 
 def test_sorted_by_state_with_same_date(test_list_of_dict_with_same_date: list[dict]) -> None:
-    assert sorted_by_state(test_list_of_dict_with_same_date) == test_list_of_dict_with_same_date
+    assert sort_by_date(test_list_of_dict_with_same_date) == test_list_of_dict_with_same_date
