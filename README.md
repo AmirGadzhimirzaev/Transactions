@@ -18,10 +18,12 @@
 3. **[processing.py](src/processing.py)** - фильтрует и сортирует данные о транзакциях
 4. **[generators.py](src/generators.py)** - генерирует данные о транзакциях и номера карт
 5. **[decorators.py](src/decorators.py)** - модуль содержащий декораторы: логирование
-6. **[format_reade](src/format_reader.py)** - читает csv и execl файлы и возвращает список словарей
+6. **[format_reader.py](src/format_reader.py)** - читает csv и execl файлы и возвращает список словарей
+7. **[re_search.py](src/re_search.py)** - Фильтрует список словарей по слову, считает все категории и их количество 
+8.  **[main.py](main.py)** - Отвечает за основную логику и взаимодействие с пользователем
 
 ## Тесты:
 
 1. Все функции в папке **src** протестированы
 2. Модули тестов в папке **tests**
-3. Отчет о тестировании: [tests_report](http://localhost:63342/Transactions/htmlcov/index.html?_ijt=h7glan3dd8im6u77lg6s4fu07&_ij_reload=RELOAD_ON_SAVE)
+3. Отчет о тестировании: [tests_report](htmlcov/index.html)

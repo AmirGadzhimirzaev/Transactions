@@ -1,13 +1,15 @@
-import pandas as pd
 import os
+
+import pandas as pd
 
 
 def csv_reader(
-        csv_file_path: str = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "transactions.csv")) -> list:
-    """ Функция для считывания финансовых операций из csv-файла, выдает список словарей с транзакциями """
+    csv_file_path: str = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "transactions.csv")
+) -> list:
+    """Функция для считывания финансовых операций из csv-файла, выдает список словарей с транзакциями"""
 
     try:
-        reader = pd.read_csv(csv_file_path, delimiter=';')
+        reader = pd.read_csv(csv_file_path, delimiter=";")
 
         data = []
 
@@ -20,9 +22,10 @@ def csv_reader(
         return []
 
 
-def xlsx_reader(xlsx_file_path: str = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data",
-                                                   "transactions_excel.xlsx")) -> list:
-    """ Функция для считывания финансовых операций из Excel, выдает список словарей с транзакциями """
+def xlsx_reader(
+    xlsx_file_path: str = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "transactions_excel.xlsx")
+) -> list:
+    """Функция для считывания финансовых операций из Excel, выдает список словарей с транзакциями"""
 
     try:
         reader = pd.read_excel(xlsx_file_path)
